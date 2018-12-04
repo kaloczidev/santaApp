@@ -1,8 +1,10 @@
 import React from 'react';
 import {Button, ScrollView, Text, TouchableOpacity } from 'react-native';
 import KidListItem from '../components/kid-list-item.component';
+import {connect} from 'react-redux';
+import {ACTIONS} from '../redux/store';
 
-export default class KidsListScreen extends React.Component {
+class KidsListScreen extends React.Component {
   static navigationOptions = {
     title: 'Kids list',
     headerTitleStyle: {
@@ -13,13 +15,24 @@ export default class KidsListScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      kids: [
-        {name: 'Peti', age: 5, gender: 'boy'},
-        {name: 'Kata', age: 4, gender: 'girl'},
-        {name: 'Béci', age: 6, gender: 'boy'},
-        {name: 'Juli', age: 3, gender: 'girl'},
-      ],
+      kids: [],
     }
+  }
+
+  componentDidMount() {
+    console.log('fasirtt',this.props);
+    const kidsData = {
+      kids: [
+        {name: 'Peti', age: 5, gender: 'boy', list: ['car', 'ball']},
+        {name: 'Kata', age: 4, gender: 'girl', list: ['doll', 'book']},
+        {name: 'Béci', age: 6, gender: 'boy', list: ['red paint', 'pencils']},
+        {name: 'Juli', age: 3, gender: 'girl', list: ['doll house', 'doll']},
+      ],
+    };
+
+    this.setState(kidsData);
+
+    this.props.dispatch({type: ACTIONS.UPDATE, payload: kidsData});
   }
 
   render() {
@@ -35,3 +48,9 @@ export default class KidsListScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {store: state};
+};
+
+export default connect(mapStateToProps)(KidsListScreen);

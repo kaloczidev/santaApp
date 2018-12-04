@@ -4,7 +4,6 @@ import {Text, View, StyleSheet} from 'react-native';
 export default class KidListItem extends React.Component {
   render() {
     const {name, age} = this.props.data;
-
     return (
       <View style={styles.container}>
         <Text style={styles.name}>{name}</Text>
