@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
+import {Text, View, StyleSheet, Image, Dimensions, ScrollView} from 'react-native';
 import {MapView} from 'expo';
+import {connect} from 'react-redux';
 
-export default class KidDetailScreen extends React.Component {
+class KidDetailScreen extends React.Component {
   static navigationOptions = ({navigation}) => {
     return {
       title: navigation.getParam('name'),
@@ -31,7 +32,7 @@ export default class KidDetailScreen extends React.Component {
     const {name, age} = this.props.navigation.state.params;
     const dim = Dimensions.get('screen').width;
     return (
-      <View style={{
+      <ScrollView style={{
         flex: 1
       }}>
         <Image
@@ -41,14 +42,24 @@ export default class KidDetailScreen extends React.Component {
         <View style={styles.ageContainer}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.age}>age: {age} </Text>
+
         </View>
-        <MapView
-          style={{height: 300}}
-        />
-      </View>
+        {/*<MapView*/}
+        {/*style={{height: 300}}*/}
+        {/*/>*/}
+        <View>
+          <Text style={{padding: 20, fontWeight: '900', fontSize: 32}}>Wants</Text>
+          {this.props.store.gifts.filter(g => g.for === name).map((gift, index) => {
+            return <Text key={index} style={{padding: 10}}>{gift.bought ? '✅' : ''} {gift.gift}</Text>
+          })}
+        </View>
+      </ScrollView>
     );
   }
 }
+
+
+export default connect((state) => ({store: state}))(KidDetailScreen);
 
 const styles = StyleSheet.create({
   ageContainer: {

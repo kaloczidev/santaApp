@@ -5,7 +5,6 @@ import {ACTIONS} from '../redux/store';
 
 class GiftsScreen extends React.Component {
   render() {
-    console.log(this.props.store);
     return (
       <SafeAreaView>
         <View>
@@ -15,7 +14,6 @@ class GiftsScreen extends React.Component {
                 const newState = {...this.props.store};
                 newState.gifts[giftIndex].bought = !newState.gifts[giftIndex].bought;
                 this.props.dispatch({type: ACTIONS.UPDATE, payload: newState});
-                console.log(newState);
               }}>
                 <Text style={{
                   padding: 20,

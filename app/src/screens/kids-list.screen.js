@@ -35,7 +35,6 @@ class KidsListScreen extends React.Component {
     kidsData.kids.forEach (kid => {
       gifts = [...gifts,...kid.list.map( g => ({ for: kid.name, gift: g, bought: false }))];
     });
-    console.log(gifts);
     this.props.dispatch({type: ACTIONS.UPDATE, payload: {gifts: gifts}});
   }
 
