@@ -1,0 +1,40 @@
+{
+  "kids": [
+    {
+      "name": "Peti",
+      "age": 5,
+      "img": "https://source.unsplash.com/_9p7--YTtFw",
+      "list": [
+        "car",
+        "ball"
+      ]
+    },
+    {
+      "name": "Kata",
+      "age": 4,
+      "img": "https://source.unsplash.com/IVrtlceLSzs",
+      "list": [
+        "doll",
+        "book"
+      ]
+    },
+    {
+      "name": "Béci",
+      "age": 6,
+      "img": "https://source.unsplash.com/f1A-oXmkYpE",
+      "list": [
+        "red paint",
+        "pencils"
+      ]
+    },
+    {
+      "name": "Juli",
+      "age": 3,
+      "img": "https://source.unsplash.com/7fzINre0NQE",
+      "list": [
+        "doll house",
+        "doll"
+      ]
+    }
+  ]
+}

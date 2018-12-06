@@ -14,22 +14,8 @@ class KidDetailScreen extends React.Component {
     };
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      img: 'https://source.unsplash.com/featured/?girl,kid,face',
-    }
-  }
-
-  componentDidMount() {
-    const {gender} = this.props.navigation.state.params;
-    this.setState({
-      img: `https://source.unsplash.com/featured/?${gender},kid,face`
-    })
-  }
-
   render() {
-    const {name, age} = this.props.navigation.state.params;
+    const {name, age, img} = this.props.navigation.state.params;
     const dim = Dimensions.get('screen').width;
     return (
       <ScrollView style={{
@@ -37,7 +23,7 @@ class KidDetailScreen extends React.Component {
       }}>
         <Image
           style={{width: dim, height: dim}}
-          source={{uri: this.state.img}}
+          source={{uri: img}}
         />
         <View style={styles.ageContainer}>
           <Text style={styles.name}>{name}</Text>

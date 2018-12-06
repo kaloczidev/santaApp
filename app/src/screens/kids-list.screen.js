@@ -20,22 +20,19 @@ class KidsListScreen extends React.Component {
   }
 
   componentDidMount() {
-    const kidsData = {
-      kids: [
-        {name: 'Peti', age: 5, gender: 'boy', list: ['car', 'ball']},
-        {name: 'Kata', age: 4, gender: 'girl', list: ['doll', 'book']},
-        {name: 'Béci', age: 6, gender: 'boy', list: ['red paint', 'pencils']},
-        {name: 'Juli', age: 3, gender: 'girl', list: ['doll house', 'doll']},
-      ],
-    };
+    fetch('http://openacademy.surge.sh/kids.json')
+      .then(r =>r.json())
+      .then(kids => {
+        this.setState(kids);
 
-    this.setState(kidsData);
+        let gifts = [];
+        kids.kids.forEach (kid => {
+          gifts = [...gifts,...kid.list.map( g => ({ for: kid.name, gift: g, bought: false }))];
+        });
+        this.props.dispatch({type: ACTIONS.UPDATE, payload: {gifts: gifts}});
 
-    let gifts = [];
-    kidsData.kids.forEach (kid => {
-      gifts = [...gifts,...kid.list.map( g => ({ for: kid.name, gift: g, bought: false }))];
-    });
-    this.props.dispatch({type: ACTIONS.UPDATE, payload: {gifts: gifts}});
+
+      }).catch(e=> console.log(e));
   }
 
   render() {
