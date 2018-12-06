@@ -20,7 +20,6 @@ class KidsListScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log('fasirtt',this.props);
     const kidsData = {
       kids: [
         {name: 'Peti', age: 5, gender: 'boy', list: ['car', 'ball']},
@@ -32,7 +31,12 @@ class KidsListScreen extends React.Component {
 
     this.setState(kidsData);
 
-    this.props.dispatch({type: ACTIONS.UPDATE, payload: kidsData});
+    let gifts = [];
+    kidsData.kids.forEach (kid => {
+      gifts = [...gifts,...kid.list.map( g => ({ for: kid.name, gift: g, bought: false }))];
+    });
+    console.log(gifts);
+    this.props.dispatch({type: ACTIONS.UPDATE, payload: {gifts: gifts}});
   }
 
   render() {

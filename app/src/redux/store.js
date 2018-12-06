@@ -2,7 +2,7 @@ import {createStore} from 'redux';
 
 
 const initState = {
-  items: {},
+  gifts: []
 };
 
 export const ACTIONS = {
@@ -10,7 +10,6 @@ export const ACTIONS = {
 };
 
 const reducer = (state = initState, action) => {
-  console.log('brekk', action);
   switch (action.type) {
     case ACTIONS.UPDATE:
       return action.payload;
