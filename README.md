@@ -36,4 +36,4 @@ Download it from your app store to your phone.
  Do what the app says: Open App.js and start hacking!
  
  ##### slides 
-  Grab them from [here]('./docs/slides.pdf').
+  Grab them from [here]('docs/slides.pdf').
